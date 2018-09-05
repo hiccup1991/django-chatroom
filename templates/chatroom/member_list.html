@@ -1,0 +1,29 @@
+  <tbody>
+  {% for user in object_list %}
+    <tr>
+      <td></td>
+      <td>{{ user.username }}</td>
+      {% if request.user.is_superuser %}
+      <td>
+        <a href="{% url 'chatroom:remove-member' slug=room.slug pk=user.id %}">
+        <i class="fa fa-times" title="remove" aria-hidden="true"></i>
+        </a>
+      </td>
+      {% endif %}
+    <tr>
+  {% endfor %}
+
+  {% if request.user.is_superuser %}
+    {% for user in not_members %}
+    <tr>
+      <td></td>
+      <td>{{ user.username }}</td>
+      <td>
+        <a href="{% url 'chatroom:add-member' slug=room.slug pk=user.id %}">
+        <i class="fa fa-plus" title="invite" aria-hidden="true"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+  <tbody>

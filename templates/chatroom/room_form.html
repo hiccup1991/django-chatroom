@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ object.name }}&nbsp&nbspSettings
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+          <legend>{{ object.name }}&nbsp&nbspSettings</legend>
+          <form enctype="multipart/form-data" method="POST" class="">
+          {% csrf_token %}
+
+            <div class="form-group label-floating">
+              <label for="{{ form.name.id_for_label }}"
+                class="control-label">{{ form.name.label_tag }}</label>
+              {{ form.name }}
+              <span class="help-block">{{ form.name.help_text|safe }}</span>
+            </div>
+            {{ form.name.errors }}
+
+            <div class="form-group">
+              <label for="{{ form.members.id_for_label }}" class="control-label">{{ form.members.label_tag }}</label>
+                {{ form.members }}
+              <span class="help-block">{{ form.members.help_text|safe }}</span>
+            </div>
+            {{ form.members.errors }}
+
+            <div class="form-group">
+              <a href="javascript:history.back(1)" class="btn btn-default">Cancel</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

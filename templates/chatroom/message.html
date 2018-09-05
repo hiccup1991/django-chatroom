@@ -1,0 +1,6 @@
+{% load tz %}
+{% for obj in message %}
+  <li class='message' id="chat_message_{{obj.pk}}" data-id='{{obj.pk}}'>
+  <p><span>[{{ obj.timestamp|timezone:'Asia/Taipei'|date:'Y-m-d H:i A' }}] {{ obj.user.username|title }}</span>&nbsp:&nbsp&nbsp<span>{{ obj.content }}</span></p>
+  </li>
+{% endfor %}

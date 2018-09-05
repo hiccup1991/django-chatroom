@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="well">
+          <h1>Login</h1>
+          <form class="form" method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="form-group label-floating">
+            <label class="control-label" for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" >
+            <span class="help-block"></span>
+            {{ form.username.errors }}
+          </div>
+
+          <div class="form-group label-floating">
+            <label class="control-label" for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" >
+            <span class="help-block">Demo account can be used. Input 'demo1234' to password.</span>
+            {{ form.password.errors }}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
